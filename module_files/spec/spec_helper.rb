@@ -1,7 +1,7 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-utils'
 # if your using puppet4, the following gem seems to causes issues
-require 'hiera-puppet-helper'
+# require 'hiera-puppet-helper'
 require 'rspec-puppet-facts'
 
 # Uncomment this to show coverage report, also useful for debugging
@@ -29,4 +29,5 @@ ENV['STRINGIFY_FACTS']  = 'no'
 RSpec.configure do |c|
     c.formatter = 'documentation'
     c.mock_with :rspec
+    c.hiera_config = File.expand_path(File.join(__FILE__, '../fixtures/hiera.yaml'))
 end
