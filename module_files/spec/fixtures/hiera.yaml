@@ -3,6 +3,6 @@
   - yaml
 :yaml:
   :datadir: "./spec/fixtures/hieradata"
-  :hierarchy:
-    - "%{::clientcert}"
-    - "common"
+:hierarchy:
+  - "%{::clientcert}"
+  - "common"
