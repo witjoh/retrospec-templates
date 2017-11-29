@@ -24,7 +24,7 @@ ENV['STRINGIFY_FACTS']  = 'no'
 
 # set to "yes" to enable the $facts hash and trusted node data, which enabled $facts and $trusted hashes.
 # This is equivalent to setting trusted_node_data=true in puppet.conf.
-#ENV['TRUSTED_NODE_DATA'] = 'yes'
+ENV['TRUSTED_NODE_DATA'] = 'yes'
 
 RSpec.configure do |c|
     c.formatter = 'documentation'
