@@ -1,4 +1,6 @@
 require 'beaker-rspec'
+require 'beaker/puppet_install_helper'
+require 'beaker/module_install_helper'
 
 UNSUPPORTED_PLATFORMS = [ 'Windows', 'Solaris', 'AIX' ]
 
@@ -10,7 +12,8 @@ unless ENV['RS_PROVISION'] == 'no' or ENV['BEAKER_provision'] == 'no'
   if default.is_pe?; then install_pe; else install_puppet( foss_opts ); end
 
   hosts.each do |host|
-    on hosts, "mkdir -p #{host['distmoduledir']}"
+    on host, "mkdir -p #{host['distmoduledir']}"
+    on host, shell('puppet config set stringify_facts false', { :acceptable_exit_codes => [0,1] })
   end
 end
 

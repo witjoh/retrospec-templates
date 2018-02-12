@@ -1,8 +1,7 @@
 require 'puppetlabs_spec_helper/module_spec_helper'
 require 'rspec-puppet-utils'
-# if your using puppet4, the following gem seems to causes issues
-# require 'hiera-puppet-helper'
 require 'rspec-puppet-facts'
+require 'rspec_junit_formatter'
 
 # Uncomment this to show coverage report, also useful for debugging
 at_exit { RSpec::Puppet::Coverage.report! }
@@ -25,9 +24,11 @@ ENV['STRINGIFY_FACTS']  = 'no'
 # set to "yes" to enable the $facts hash and trusted node data, which enabled $facts and $trusted hashes.
 # This is equivalent to setting trusted_node_data=true in puppet.conf.
 ENV['TRUSTED_NODE_DATA'] = 'yes'
+include RspecPuppetFacts
 
 RSpec.configure do |c|
     c.formatter = 'documentation'
+    c.add_formatter('RspecJunitFormatter', 'junit/reports_junit.xml')
     c.mock_with :rspec
     c.hiera_config = File.expand_path(File.join(__FILE__, '../fixtures/hiera.yaml'))
 end
