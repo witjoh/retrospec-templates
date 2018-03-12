@@ -13,7 +13,7 @@ unless ENV['RS_PROVISION'] == 'no' or ENV['BEAKER_provision'] == 'no'
 
   hosts.each do |host|
     on host, "mkdir -p #{host['distmoduledir']}"
-    on host, shell('puppet config set stringify_facts false', { :acceptable_exit_codes => [0,1] })
+    on host, puppet('config', 'set', 'stringify_facts', 'false')
   end
 end
 
@@ -34,7 +34,6 @@ RSpec.configure do |c|
       copy_module_to(host, :source => proj_root, :module_name => '<%= @module_name %>')
 
       # transfer the fixtures to the host (needs bundle exec rake prep_spec run)
-      #install_module_on(host)
       scp_to(host ,fixture_modules, "#{host['distmoduledir']}/..", { :ignore => '<%= @module_name %>'})
 
     end
