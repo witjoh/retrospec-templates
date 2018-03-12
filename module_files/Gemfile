@@ -29,6 +29,8 @@ end
 group :integration do
     gem "beaker"
     gem "beaker-rspec"
+    gem "beaker-puppet_install_helper"
+    gem "beaker-module_install_helper"
     gem "vagrant-wrapper"
     gem 'serverspec'
 end
