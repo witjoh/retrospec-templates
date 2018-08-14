@@ -4,12 +4,11 @@ HOSTS:
     role:
       - agent
     hypervisor: docker
-    image: localhost:5000/redhat-7.4-x86_64-nocm:latest
+    image: vagrantio.vdab.be:5000/vdab/rhel7:latest
     docker_preserve_image: false
     docker_cmd: '["/usr/sbin/init"]'
     # install various tools required to get the image up to usable levels
     docker_image_commands:
-      - 'echo export http_proxy=vdabprdproxy.vdab.be:8080 > /etc/profile.d/proxy.sh'
       - 'yum install -y crontabs tar wget openssl sysvinit-tools iproute which initscripts'
 CONFIG:
   type: foss
