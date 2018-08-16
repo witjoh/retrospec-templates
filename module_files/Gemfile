@@ -14,7 +14,6 @@ group :test do
     gem "semantic_puppet"
     gem "yaml-lint-ng"
 
-    gem "rspec-puppet-facts"
     gem "rspec_junit_formatter"
 
     gem "puppet-lint-absolute_classname-check"
