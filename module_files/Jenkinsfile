@@ -37,16 +37,8 @@ pipeline {
           
           sh '''#!/bin/bash --login 
             set +o posix
-            #set +x
-            #. ~/.rvm/scripts/rvm
-            #set -x
             rvm use $RVM_RUBY_VERSION
-            gem list
-            rvm info
-            rvm use ruby-2.4.4
-            gem list
-            rvm info
-            # bundle install --without development || bundle update
+            bundle install --without development || bundle update
           '''
         }
       }
@@ -112,7 +104,7 @@ pipeline {
             try {
               sh '''#!/bin/bash --login
                 set +o posix
-                set +xdd
+                set +x
                 rvm use $RVM_RUBY_VERSION
                 bundle exec rake spec
                 '''
